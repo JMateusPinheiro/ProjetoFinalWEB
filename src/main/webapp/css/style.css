@@ -1,12 +1,5 @@
 @CHARSET "UTF-8";
-.form-control {
-	position: relative;
-	font-size: 16px;
-	height: auto;
-	padding: 10px;
-}
 
-}
 .form-login {
 	margin-top: 60px;
 }
@@ -28,16 +21,6 @@ form[role=login] input, form[role=login] button {
 	margin: 16px 0;
 }
 
-form[role=login]>div {
+form[role=login] > div {
 	text-align: center;
-}
-
-.form-links {
-	text-align: center;
-	margin-top: 1em;
-	margin-bottom: 50px;
-}
-
-.form-links a {
-	color: #fff;
 }

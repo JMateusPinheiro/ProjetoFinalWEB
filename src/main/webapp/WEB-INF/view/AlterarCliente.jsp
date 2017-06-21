@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>L11</title>
-<link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="/bootstrap-3.3.7/css/bootstrap.css">
 </head>
 <body>
 	<div class="container">

@@ -5,7 +5,7 @@
 <title></title>
 </head>
 <body>
-	<div>
+	<div class="jumbotron">
 		<h1>Pet Show</h1>
 		<p>Seu PET nas mãos certas</p>
 	</div>
