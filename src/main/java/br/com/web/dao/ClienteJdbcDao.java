@@ -9,11 +9,11 @@ import java.util.List;
 
 import br.com.web.model.Cliente;
 
-public class ClienteJDBCDao implements ClienteDao{
+public class ClienteJdbcDao implements ClienteDao{
 	
 	private Connection connection;
 
-	public ClienteJDBCDao() {
+	public ClienteJdbcDao() {
 		this.connection = new ConnectionFactory().getConnection();
 	}
 
