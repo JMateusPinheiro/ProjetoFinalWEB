@@ -9,7 +9,7 @@
 		<div class="col-lg-3"></div>
 		<div class="col-lg-6 ">
 			<form action="clientes/add" method="post">
-				<img src="img/Logo.png" class="img-responsive" alt="" />
+				<img src="/img/Logos/1_Primary_logo_on_transparent.png" class="img-responsive" alt="" />
 				<h1>Cadastrar</h1>
 				<div class="form-group">
 					<input type="text" name="nome" class="form-control"

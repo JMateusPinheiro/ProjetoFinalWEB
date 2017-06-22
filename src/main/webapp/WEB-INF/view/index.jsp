@@ -6,20 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>PetShow</title>
+<link rel="icon" type="image/png" href="/img/Logos/favicon.ico" sizes="32x32" />
 <link rel="stylesheet" href="/bootstrap-3.3.7/css/bootstrap.css" />
 <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
 	<%@ include file="cabecalho.jsp"%>
-
-	<div class="container">
-		<div id="content" class="col-lg-12">
-			<div class="jumbotron">
-				<h1>
-					<img src="/img/Logo.png" />
-				</h1>
-				<p>Seu PET nas mãos certas</p>
-			</div>
+	<div id="content" class="col-lg-12">
+		<div class="jumbotron banner container-fluid">
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		</div>
+		<div class="container">
 			<div>
 				<h3>Produtos em Destaque</h3>
 				<div class="col-lg-12">
@@ -81,8 +78,8 @@
 			</div>
 		</div>
 	</div>
-	<%@ include file="Login.jsp" %>
-	<%@ include file="Cadastro.jsp" %>
+	<%@ include file="Login.jsp"%>
+	<%@ include file="Cadastro.jsp"%>
 	<script src="/js/jquery.js"></script>
 	<script src="/bootstrap-3.3.7/js/bootstrap.js"></script>
 	<script src="/js/index.js"></script>

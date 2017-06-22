@@ -27,3 +27,11 @@ form > div {
 .spacebottom {
 	margin-bottom: 35px;
 }
+.banner {
+	width: 1350px;
+	background-image: url("/img/bannerSlideHome.jpg");
+	background-size: 1350px 280px;
+}
+.logo img{
+	width: 110px;
+}

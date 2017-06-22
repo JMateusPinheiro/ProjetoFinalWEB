@@ -9,7 +9,7 @@
 		<div class="col-md-4"></div>
 		<div class="col-md-4 col-lg-4">
 			<form method="post" action="#">
-				<img src="img/Logo.png" class="img-responsive" alt="" />
+				<img src="/img/Logos/1_Primary_logo_on_transparent.png" class="img-responsive" alt="" />
 				<div class="form-group">
 					<input type="email" name="email" placeholder="Email"
 						class="form-control" required />
