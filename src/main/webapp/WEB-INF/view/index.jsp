@@ -14,7 +14,6 @@
 	<%@ include file="cabecalho.jsp"%>
 	<div id="content" class="col-lg-12">
 		<div class="jumbotron banner container-fluid">
-		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 		</div>
 		<div class="container">
 			<div>
@@ -22,7 +21,7 @@
 				<div class="col-lg-12">
 					<div class="thumbnail col-lg-3 col-md-4 col-xs-12">
 						<a href="#"><img
-							src="img/Produtos/Ração-Nestlé-Purina-Pro-Plan-Cat-Urinary-para-Gatos-Adultos-com-Cálculos-Urinários.jpg"></a>
+							src="/img/Produtos/Ração-Nestlé-Purina-Pro-Plan-Cat-Urinary-para-Gatos-Adultos-com-Cálculos-Urinários.jpg"></a>
 						<h4>Ração Nestlé Purina Pro Plan Cat Urinary para Gato</h4>
 						<p>R$ 92,90 Nestlé Purina</p>
 					</div>
