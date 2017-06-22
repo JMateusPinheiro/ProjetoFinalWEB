@@ -9,7 +9,7 @@ public class ConnectionFactory {
         		Class.forName("org.postgresql.Driver");
         		
             return DriverManager.getConnection(
-            		"jdbc:postgresql://localhost/dsweb_L11", 
+            		"jdbc:postgresql://localhost/dsweb_TF", 
             		"postgres", "postgres");
         } catch (Exception e) {
             throw new RuntimeException(e);

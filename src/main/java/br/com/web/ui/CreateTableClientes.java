@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import br.com.web.dao.ConnectionFactory;
 
-public class CreateTable {
+public class CreateTableClientes {
 
 	public static void main(String[] args) throws SQLException {
 		Connection c = new ConnectionFactory().getConnection();
