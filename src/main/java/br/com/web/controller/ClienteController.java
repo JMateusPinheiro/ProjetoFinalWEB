@@ -20,13 +20,7 @@ import br.com.web.model.Cliente;
 public class ClienteController{
 
 	@RequestMapping("/")
-	public String getList(Model model) throws SQLException	{
-		ClienteDao clienteDao = new ClienteJdbcDao();
-		List<Cliente> clientes = clienteDao.getLista();
-
-		model.addAttribute("clientes", clientes);
-
-		clienteDao.close();
+	public String home(Model model) throws SQLException	{
 		return "index";
 	}
 
@@ -70,5 +64,15 @@ public class ClienteController{
 			return "redirect:/";
 		}
 		return "ErrorPage";
+	}
+	@RequestMapping("/listar")
+	public String getList(Model model) throws SQLException	{
+		ClienteDao clienteDao = new ClienteJdbcDao();
+		List<Cliente> clientes = clienteDao.getLista();
+
+		model.addAttribute("clientes", clientes);
+
+		clienteDao.close();
+		return "adm/ListarClientes";
 	}
 }

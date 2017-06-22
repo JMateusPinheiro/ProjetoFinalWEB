@@ -1,15 +1,17 @@
-<%@	page language="java"	contentType="text/html;	charset=UTF-8"	
-pageEncoding="UTF-8"%>	
-<%@	taglib uri="http://java.sun.com/jsp/jstl/core"	prefix="c"	%>
+<%@	page language="java" contentType="text/html;	charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@	taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>PetShow</title>
-<link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="/bootstrap-3.3.7/css/bootstrap.css">
 </head>
 <body>
-<a href="/" class="btn btn-default pull-right">Listar Usuários</a>
+	<%@ include file="../cabecalho.jsp"%>
+	<div class="container">
+		<a href="/listar" class="btn btn-default pull-right">Listar Usuários</a>
 
 		<table class="table table-hover">
 			<thead>
@@ -42,6 +44,6 @@ pageEncoding="UTF-8"%>
 				</c:forEach>
 			</tbody>
 		</table>
-
+	</div>
 </body>
 </html>

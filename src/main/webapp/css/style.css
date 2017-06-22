@@ -4,23 +4,26 @@
 	margin-top: 60px;
 }
 
-form[role=login] {
+form {
 	color: #5d5d5d;
 	background: #f2f2f2;
 	padding: 26px;
 	border-radius: 10px;
 }
 
-form[role=login] img {
+form img {
 	display: block;
 	margin: 0 auto;
 	margin-bottom: 35px;
 }
 
-form[role=login] input, form[role=login] button {
+form input, form button {
 	margin: 16px 0;
 }
 
-form[role=login] > div {
+form > div {
 	text-align: center;
+}
+.spacebottom {
+	margin-bottom: 35px;
 }
