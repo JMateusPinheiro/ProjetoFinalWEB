@@ -28,11 +28,19 @@ form > div {
 	margin-bottom: 35px;
 }
 .banner {
-	width: 1350px;
+	width: 100%;
 	height: 300px;
 	background-image: url("/img/bannerSlideHome.jpg");
 	background-size: 1350px 280px;
 }
 .logo img{
 	width: 110px;
+}
+
+.produto{
+	height: 280px;
+}
+
+.produto img{
+	width: 180px;
 }

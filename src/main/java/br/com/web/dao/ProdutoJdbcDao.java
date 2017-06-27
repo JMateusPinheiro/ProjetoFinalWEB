@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.web.model.Cliente;
+import br.com.web.model.Usuario;
 import br.com.web.model.Produto;
 
 public class ProdutoJdbcDao implements ProdutoDao {
@@ -117,14 +117,18 @@ public class ProdutoJdbcDao implements ProdutoDao {
 
 	@Override
 	public void remove(int id) {
-		// TODO Auto-generated method stub
-		
-	}
-
+		try {
+	         PreparedStatement stmt = connection.prepareStatement("delete from produtos where id=?");
+	         stmt.setInt(1, id);
+	         stmt.execute();
+	         stmt.close();
+	     } catch (SQLException e) {
+	         throw new RuntimeException(e);
+	     }
+	 }
+	
 	@Override
-	public void close() throws SQLException {
-		// TODO Auto-generated method stub
-		
+	public void close() throws SQLException{
+		connection.close();
 	}
-
 }

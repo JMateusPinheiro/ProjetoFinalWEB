@@ -3,7 +3,7 @@ package br.com.web.model;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class Cliente {
+public class Usuario {
 	
 	@NotNull
 	@Size(min=2, max=200, message="Numero de Caracteres entre {min} e {max}")
