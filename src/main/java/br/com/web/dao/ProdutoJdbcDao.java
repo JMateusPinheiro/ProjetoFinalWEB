@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.web.model.Usuario;
 import br.com.web.model.Produto;
 
 public class ProdutoJdbcDao implements ProdutoDao {
