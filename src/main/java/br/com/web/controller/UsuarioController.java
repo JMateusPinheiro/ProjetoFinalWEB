@@ -30,11 +30,11 @@ public class UsuarioController{
 		return "adm/ADM_Index";
 	}
 
-	@RequestMapping(value = "/clientes/add", method = RequestMethod.POST)
-	public String create(@Valid Usuario rcliente, @RequestParam("re-senha") String resenha, RedirectAttributes redirectAttributes) throws SQLException{
+	@RequestMapping(value = "/usuario/add", method = RequestMethod.POST)
+	public String create(@Valid Usuario rusuario, @RequestParam("re-senha") String resenha, RedirectAttributes redirectAttributes) throws SQLException{
 		UsuarioDao usuariodao = new UsuarioJdbcDao();
-		if(rcliente.getSenha().equals(resenha)){
-			usuariodao.adiciona(rcliente);
+		if(rusuario.getSenha().equals(resenha)){
+			usuariodao.adiciona(rusuario);
 			redirectAttributes.addFlashAttribute("ver", "Success");
 			redirectAttributes.addFlashAttribute("msg", "Conta criada com sucesso");
 			usuariodao.close();
@@ -48,17 +48,17 @@ public class UsuarioController{
 		}		
 	}
 
-	@RequestMapping("/clientes/{cpf}")
-	public String delete(@PathVariable("cpf") String cpf) throws SQLException{
+	@RequestMapping("/usuario/delete/{id}")
+	public String delete(@PathVariable("id") String cpf) throws SQLException{
 		UsuarioDao usuariodao = new UsuarioJdbcDao();
 		usuariodao.remove(cpf);
 		usuariodao.close();
 
-		return "redirect:/";
+		return "redirect:adm/ADM_GerenciarClientes";
 	}
 
-	@RequestMapping("/alt/{cpf}")
-	public String alt(@PathVariable("cpf") String cpf, Model model) throws SQLException{
+	@RequestMapping("/usuario/redirect_update/{id}")
+	public String alt(@PathVariable("id") String cpf, Model model) throws SQLException{
 		UsuarioDao usuariodao = new UsuarioJdbcDao();
 		Usuario usuario = usuariodao.getCliente(cpf);
 		model.addAttribute("cliente", usuario);
@@ -66,25 +66,25 @@ public class UsuarioController{
 		return "AlterarCliente";
 	}
 	
-	@RequestMapping(value = "/clientes/update", method = RequestMethod.POST)
+	@RequestMapping(value = "/usuario/update", method = RequestMethod.POST)
 	public String update(Usuario rusuario, @RequestParam("re-senha") String resenha) throws SQLException{
 		UsuarioDao usuariodao = new UsuarioJdbcDao();
 		if(rusuario.getSenha().equals(resenha)){
 
 			usuariodao.altera(rusuario);
 			usuariodao.close();
-			return "redirect:/";
+			return "redirect:adm/ADM_GerenciarClientes";
 		}
 		return "ErrorPage";
 	}
-	@RequestMapping("/listar")
+	@RequestMapping("/usuario/gerenciar")
 	public String getList(Model model) throws SQLException	{
 		UsuarioDao usuarioDao = new UsuarioJdbcDao();
 		List<Usuario> usuarios = usuarioDao.getLista();
 
-		model.addAttribute("clientes", usuarios);
+		model.addAttribute("usuarios", usuarios);
 
 		usuarioDao.close();
-		return "adm/ListarClientes";
+		return "adm/ADM_GerenciarClientes";
 	}
 }

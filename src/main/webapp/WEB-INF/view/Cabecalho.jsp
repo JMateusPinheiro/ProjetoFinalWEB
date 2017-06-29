@@ -57,8 +57,9 @@
 							<ul class="dropdown-menu">
 								<li><a href="#"><span
 								class="glyphicon glyphicon-user"></span> Perfil</a></li>
+								<li role="separator" class="divider"></li>
 								<li><a href="#"><span
-								class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+								class="glyphicon glyphicon-log-out"></span> Sair</a></li>
 							</ul></li>
 					</ul>
 				</div>

@@ -6,11 +6,11 @@ import java.sql.SQLException;
 
 import br.com.web.dao.ConnectionFactory;
 
-public class CreateTableClientes {
+public class UsuarioTableClientes {
 
 	public static void main(String[] args) throws SQLException {
 		Connection c = new ConnectionFactory().getConnection();
-		String sql = "create table clientes(id serial,"
+		String sql = "create table usuarios(id serial,"
 				+ "nome varchar(100), "
 				+ "endereco varchar(500), "
 				+ "cpf varchar(11), "

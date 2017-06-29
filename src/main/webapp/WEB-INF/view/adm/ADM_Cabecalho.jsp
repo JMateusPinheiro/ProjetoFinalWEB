@@ -17,13 +17,14 @@
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
-						<li><a href="#"><span class="glyphicon glyphicon-home"></span> Início</a></li>
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-cog"></span> Gerenciar Usuários</a></li>
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-cog"></span> Gerenciar Produtos</a></li>
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-cog"></span> Gerenciar Serviços</a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-home"></span>
+								Início</a></li>
+						<li><a href="/usuario/gerenciar"><span class="glyphicon glyphicon-cog"></span>
+								Gerenciar Usuários</a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-cog"></span>
+								Gerenciar Produtos</a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-cog"></span>
+								Gerenciar Serviços</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown"><a id="btn-perfil"
@@ -32,6 +33,7 @@
 							<ul class="dropdown-menu">
 								<li><a href="#"><span class="glyphicon glyphicon-user"></span>
 										Perfil</a></li>
+								<li role="separator" class="divider"></li>
 								<li><a href="#"><span
 										class="glyphicon glyphicon-log-out"></span> Sair</a></li>
 							</ul></li>
