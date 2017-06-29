@@ -21,6 +21,7 @@
 				<button type="submit" class="btn btn-lg btn-primary btn-block">Entrar</button>
 
 			</form>
+			<a href="/adm">ADM</a>
 		</div>
 
 		<div class="col-md-4"></div>

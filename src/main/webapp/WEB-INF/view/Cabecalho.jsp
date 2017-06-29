@@ -19,7 +19,7 @@
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
-						<li><a href="/">Início</a></li>
+						<li><a href="/"><span class="glyphicon glyphicon-home"></span> Início</a></li>
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">Cachorros <span class="caret"></span></a>
 							<ul class="dropdown-menu">

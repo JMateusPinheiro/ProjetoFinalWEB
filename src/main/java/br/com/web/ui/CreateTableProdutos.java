@@ -16,6 +16,7 @@ public class CreateTableProdutos {
 				+ "descricao varchar(300), "
 				+ "qtd bigint, "
 				+ "img_link varchar(150),"
+				+ "classificacao varchar(50)"
 				+ "primary key(id))";
 		PreparedStatement ps = c.prepareStatement(sql);
 		ps.executeUpdate();

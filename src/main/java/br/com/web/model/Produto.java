@@ -1,14 +1,15 @@
 package br.com.web.model;
 
 public class Produto {
-	
+
 	int id;
 	String nome;
+	int qtd;
 	float preco;
 	String descricao;
-	int qtd;
 	String img_link;
-	
+	String classificacao;
+
 	public String getNome() {
 		return nome;
 	}
@@ -44,5 +45,11 @@ public class Produto {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public String getClassificacao() {
+		return classificacao;
+	}
+	public void setClassificacao(String classificacao) {
+		this.classificacao = classificacao;
 	}
 }

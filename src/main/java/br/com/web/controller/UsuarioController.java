@@ -24,6 +24,11 @@ public class UsuarioController{
 	public String home(Model model) throws SQLException	{
 		return "index";
 	}
+	
+	@RequestMapping("/adm")
+	public String admHome(Model model) throws SQLException	{
+		return "adm/ADM_Index";
+	}
 
 	@RequestMapping(value = "/clientes/add", method = RequestMethod.POST)
 	public String create(@Valid Usuario rcliente, @RequestParam("re-senha") String resenha, RedirectAttributes redirectAttributes) throws SQLException{

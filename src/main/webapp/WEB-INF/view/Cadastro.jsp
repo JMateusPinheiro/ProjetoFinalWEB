@@ -20,11 +20,11 @@
 						placeholder="Endereço" alt="Endereço" required />
 				</div>
 				<div class="form-group">
-					<input type="Number" name="cpf" class="form-control"
+					<input id="cpf" type="text"  name="cpf" class="form-control"
 						placeholder="CPF" alt="CPF" required />
 				</div>
 				<div class="form-group">
-					<input type="Number" name="telefone" class="form-control"
+					<input type="text" id="telefone" name="telefone" class="form-control"
 						placeholder="Telefone" alt="Telefone" required />
 				</div>
 				<div class="form-group">

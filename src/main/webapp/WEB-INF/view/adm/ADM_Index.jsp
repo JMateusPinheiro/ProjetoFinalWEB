@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@	page language="java" contentType="text/html;	charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@	taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,17 +11,12 @@
 <link rel="stylesheet" href="/bootstrap-3.3.7/css/bootstrap.css" />
 <link rel="stylesheet" href="/css/style.css" />
 </head>
+</head>
 <body>
-	<%@ include file="Cabecalho.jsp"%>
-	<%@ include file="Content.jsp"%>
-	<%@ include file="Login.jsp"%>
-	<%@ include file="Cadastro.jsp"%>
-	
+	<%@ include file="ADM_Cabecalho.jsp"%>
+
 	<script src="/js/jquery.js"></script>
 	<script src="/js/jquery.maskedinput.js"></script>
 	<script src="/bootstrap-3.3.7/js/bootstrap.js"></script>
-	<script src="/js/index.js"></script>
-	<script src="/js/globalscript.js"></script>
 </body>
 </html>
-
