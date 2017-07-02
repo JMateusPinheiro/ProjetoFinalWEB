@@ -10,9 +10,9 @@ public interface ProdutoDao {
 
 	public void adiciona(Produto produto);
 
-	public List<Produto> getLista();
+	public List<Produto> getProdutos();
 
-	public Produto getCliente(int id);
+	public Produto getProduto(int id);
 
 	public void altera(Produto produto);
 

@@ -37,7 +37,6 @@ function show(){
 //	});
 }
 $(document).ready(function(){
-	$('#btn-perfil').hide();
 	$('#form-cadastro').hide();
 	$('#form-login').hide();
 	show();

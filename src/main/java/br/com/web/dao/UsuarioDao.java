@@ -9,13 +9,15 @@ public interface UsuarioDao {
 
 	public void adiciona(Usuario usuario);
 	
-	public List<Usuario> getLista();
+	public List<Usuario> getUsuarios();
 	
-	public Usuario getCliente(String cpf);
+	public Usuario getUsuarioById(int id);
+	
+	public Usuario getUsuarioByEmail(String email);
 	
 	public void altera(Usuario usuario);
 	
-	public void remove(String cpf);
+	public void remove(int id);
 	
 	public void close() throws SQLException;
 }

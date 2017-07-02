@@ -42,7 +42,7 @@ public class ProdutoJdbcDao implements ProdutoDao {
 	}
 
 	@Override
-	public List<Produto> getLista() {
+	public List<Produto> getProdutos() {
 		try {
 			List<Produto> produtos = new ArrayList<Produto>();
 			PreparedStatement stmt = this.connection.prepareStatement("select * from produtos");
@@ -70,7 +70,7 @@ public class ProdutoJdbcDao implements ProdutoDao {
 	}
 
 	@Override
-	public Produto getCliente(int id) {
+	public Produto getProduto(int id) {
 		try {
 			Produto produto = new Produto();
 			PreparedStatement stmt = this.connection.prepareStatement("select * from produtos where id=?");

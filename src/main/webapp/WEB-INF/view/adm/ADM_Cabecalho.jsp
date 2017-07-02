@@ -12,14 +12,14 @@
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand logo" href="/"><img
+					<a class="navbar-brand logo" href="/adm"><img
 						src="/img/Logos/1_Primary_logo_on_transparent_nav.png" /></a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
-						<li><a href="#"><span class="glyphicon glyphicon-home"></span>
+						<li><a href="/adm"><span class="glyphicon glyphicon-home"></span>
 								Início</a></li>
-						<li><a href="/usuario/gerenciar"><span class="glyphicon glyphicon-cog"></span>
+						<li><a href="/adm/gerenciar_usuario"><span class="glyphicon glyphicon-cog"></span>
 								Gerenciar Usuários</a></li>
 						<li><a href="#"><span class="glyphicon glyphicon-cog"></span>
 								Gerenciar Produtos</a></li>
@@ -28,13 +28,13 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown"><a id="btn-perfil"
-							class="dropdown-toggle" data-toggle="dropdown" href="#">${cliente.email}<span
+							class="dropdown-toggle" data-toggle="dropdown" href="#">${usuario.nome} <span
 								class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><span class="glyphicon glyphicon-user"></span>
 										Perfil</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a href="#"><span
+								<li><a href="/deslogar"><span
 										class="glyphicon glyphicon-log-out"></span> Sair</a></li>
 							</ul></li>
 					</ul>

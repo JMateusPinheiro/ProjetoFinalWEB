@@ -15,40 +15,36 @@
 	<%@ include file="ADM_Cabecalho.jsp"%>
 
 	<div class="col-lg-12 spacebottom container">
-		<div class="col-lg-1"></div>
-		<div class="col-lg-10">
+		<div class="col-lg-2"></div>
+		<div class="col-lg-8">
 			<div>
-			<h1>Gerenciar Usuários</h1>
-				<table class="table table-hover">
+				<h1>Gerenciar Usuários</h1>
+				<table class="table table-hover text-center">
 					<thead>
 						<tr>
-							<th>Nome</th>
-							<th>Endereço</th>
-							<th>CPF</th>
-							<th>Telefone</th>
-							<th>Email</th>
-							<th>Excluir</th>
-							<th>Alterar</th>
+							<th class="text-center">Nome</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="usuario" items="${usuarios}">
 							<tr>
 								<td>${usuario.nome}</td>
-								<td>${usuario.endereco}</td>
-								<td>${usuario.cpf}</td>
-								<td>${usuario.telefone}</td>
-								<td>${usuario.email}</td>
-								<!-- Botão Excluir passando o parametro CPF-->
-								<td><a href="/usuario/delete/${usuario.id}"
-									class="btn btn-primary">Excluir</a></td>
+								<!-- Botão Vusualizar-->
+								<td><a href="/adm/ver_usuario/${usuario.id}"
+									class="btn btn-primary"><span
+										class="glyphicon glyphicon-eye-open"></span> Visualizar</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 			</div>
 		</div>
-		<div class="col-lg-1"></div>
+		<div class="col-lg-2"></div>
 	</div>
+
+	<script src="/js/jquery.js"></script>
+	<script src="/js/jquery.maskedinput.js"></script>
+	<script src="/bootstrap-3.3.7/js/bootstrap.js"></script>
 </body>
 </html>

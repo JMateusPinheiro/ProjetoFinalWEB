@@ -1,35 +1,15 @@
 package br.com.web.model;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 public class Usuario {
 
-	@NotNull
 	int id;
-
-	@NotNull
-	@Size(min=2, max=200, message="Numero de Caracteres entre {min} e {max}")
 	String nome;
-
-	@NotNull
-	@Size(min=2, max=200, message="Numero de Caracteres entre {min} e {max}")
 	String endereco;
-
-	@NotNull
-	@Size(min=11, max=11, message="O cpf precisa ter exatamente 11 caracteres")
 	String cpf;
-
-	@NotNull
 	String email;
-
-	@NotNull
-	@Size(min=11, max=11, message="O Telefone precisa ter exatamente 11 numeros")
 	String telefone;
-
-	@NotNull
-	@Size(min=2, message="Senha precisa ter no minimo 4 caracteres")
 	String senha;
+	String role;
 
 	public String getNome() {
 		return nome;
@@ -72,5 +52,11 @@ public class Usuario {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 }
