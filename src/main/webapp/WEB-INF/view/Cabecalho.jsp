@@ -26,38 +26,44 @@
 							data-toggle="dropdown" href="#">Cachorros <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="#">Produtos</a></li>
-								<li><a href="#">Serviços</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">Gatos <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="#">Produtos</a></li>
-								<li><a href="#">Serviços</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">Aves <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="#">Produtos</a></li>
-								<li><a href="#">Serviços</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">Roedores <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="#">Produtos</a></li>
-								<li><a href="#">Serviços</a></li>
 							</ul></li>
+						<c:if test="${usuario.role == 'usuario'}">
+							<li><a href="#">Solicitar Serviço</a></li>
+						</c:if>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#"><span
-								class="glyphicon glyphicon-shopping-cart"></span> Carrinho</a></li>
+						<c:if test="${usuario.role == 'usuario' || usuario == null}">
+							<li><a href="#"><span
+									class="glyphicon glyphicon-shopping-cart"></span> Carrinho</a></li>
+						</c:if>
 						<c:choose>
 							<c:when test="${usuario != null}">
 								<li class="dropdown"><a id="btn-perfil"
-									class="dropdown-toggle" data-toggle="dropdown" href="#">${usuario.nome} <span
-										class="caret"></span></a>
+									class="dropdown-toggle" data-toggle="dropdown" href="#">${usuario.nome}
+										<span class="caret"></span>
+								</a>
 									<ul class="dropdown-menu">
 										<li><a href="/usuario"><span
 												class="glyphicon glyphicon-user"></span> Perfil</a></li>
+										<c:if test="${usuario.role == 'admin'}">
+											<li><a href="/adm"><span
+													class="glyphicon glyphicon-cog"></span> Gerenciar Site</a></li>
+										</c:if>
 										<li role="separator" class="divider"></li>
 										<li><a href="/deslogar"><span
 												class="glyphicon glyphicon-log-out"></span> Sair</a></li>
