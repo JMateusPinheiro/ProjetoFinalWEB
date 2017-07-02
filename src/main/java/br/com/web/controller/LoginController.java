@@ -24,10 +24,12 @@ public class LoginController {
 		Usuario usuario = usuariodao.getUsuarioByEmail(email);
 		if(senha.equals(usuario.getSenha()) && usuario.getRole().equals("usuario")){
 			session.setAttribute("usuario", usuario);
+			session.setAttribute("admin", "no");
 			return "redirect:/";
 		}
 		else if(senha.equals(usuario.getSenha()) && usuario.getRole().equals("admin")){
 			session.setAttribute("usuario", usuario);
+			session.setAttribute("admin", "yes");
 			return "redirect:/adm";
 		}
 		else{
