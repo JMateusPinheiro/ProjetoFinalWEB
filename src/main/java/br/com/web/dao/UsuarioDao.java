@@ -1,6 +1,5 @@
 package br.com.web.dao;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import br.com.web.model.Usuario;
@@ -19,5 +18,5 @@ public interface UsuarioDao {
 	
 	public void remove(int id);
 	
-	public void close() throws SQLException;
+	public void close();
 }

@@ -10,7 +10,7 @@ import java.util.List;
 import br.com.web.model.Usuario;
 
 public class UsuarioJdbcDao implements UsuarioDao{
-	
+
 	private Connection connection;
 
 	public UsuarioJdbcDao() {
@@ -40,7 +40,7 @@ public class UsuarioJdbcDao implements UsuarioDao{
 			throw new RuntimeException(e);
 		}
 	}
-	
+
 	public List<Usuario> getUsuarios() {
 		try {
 			List<Usuario> usuarios = new ArrayList<Usuario>();
@@ -67,14 +67,14 @@ public class UsuarioJdbcDao implements UsuarioDao{
 			throw new RuntimeException(e);
 		}
 	}
-	
+
 	public Usuario getUsuarioById(int id){
 		try {
 			Usuario usuario = new Usuario();
 			PreparedStatement stmt = this.connection.prepareStatement("select * from usuarios where id=?");
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
-			
+
 			while (rs.next()) {
 				// criando o objeto Contato
 				usuario.setId(rs.getInt("id"));
@@ -92,16 +92,16 @@ public class UsuarioJdbcDao implements UsuarioDao{
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-		
+
 	}
-	
+
 	public Usuario getUsuarioByEmail(String email){
 		try {
 			Usuario usuario = new Usuario();
 			PreparedStatement stmt = this.connection.prepareStatement("select * from usuarios where email=?");
 			stmt.setString(1, email);
 			ResultSet rs = stmt.executeQuery();
-			
+
 			while (rs.next()) {
 				// criando o objeto Contato
 				usuario.setId(rs.getInt("id"));
@@ -119,12 +119,12 @@ public class UsuarioJdbcDao implements UsuarioDao{
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-		
+
 	}
-	
+
 	public void altera(Usuario usuario) {
 		String sql = "update usuarios set nome=?, cpf=?, endereco=?, email=?, telefone=?, senha=?"
-				+ "where ";
+				+ "where id=?";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
@@ -134,24 +134,29 @@ public class UsuarioJdbcDao implements UsuarioDao{
 			stmt.setString(4, usuario.getEmail());
 			stmt.setString(5, usuario.getTelefone());
 			stmt.setString(6, usuario.getSenha());
+			stmt.setInt(7, usuario.getId());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 	}
-	
+
 	public void remove(int id) {
-	     try {
-	         PreparedStatement stmt = connection.prepareStatement("delete from usuarios where id=?");
-	         stmt.setInt(1, id);
-	         stmt.execute();
-	         stmt.close();
-	     } catch (SQLException e) {
-	         throw new RuntimeException(e);
-	     }
-	 }
-	public void close() throws SQLException{
-		connection.close();
+		try {
+			PreparedStatement stmt = connection.prepareStatement("delete from usuarios where id=?");
+			stmt.setInt(1, id);
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	public void close(){
+		try{
+			connection.close();
+		}catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }

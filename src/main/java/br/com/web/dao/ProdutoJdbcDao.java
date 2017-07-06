@@ -127,7 +127,11 @@ public class ProdutoJdbcDao implements ProdutoDao {
 	 }
 	
 	@Override
-	public void close() throws SQLException{
+	public void close(){
+		try{
 		connection.close();
+		}catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }

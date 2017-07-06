@@ -23,7 +23,7 @@
 								Gerenciar Usuários</a></li>
 						<li><a href="/adm/gerenciar_produtos"><span class="glyphicon glyphicon-cog"></span>
 								Gerenciar Produtos</a></li>
-						<li><a href="#"><span class="glyphicon glyphicon-cog"></span>
+						<li><a href="/adm/gerenciar_servicos"><span class="glyphicon glyphicon-cog"></span>
 								Gerenciar Serviços</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">

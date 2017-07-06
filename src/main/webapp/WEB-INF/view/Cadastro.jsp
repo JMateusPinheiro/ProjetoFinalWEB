@@ -1,35 +1,46 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>PetShow</title>
+<link rel="icon" type="image/png" href="/img/Logos/favicon.ico"
+	sizes="32x32" />
+<link rel="stylesheet" href="/bootstrap-3.3.7/css/bootstrap.css" />
+<link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
 	<div id="form-cadastro" class="col-lg-12 spacebottom">
 		<div class="col-lg-3"></div>
 		<div class="col-lg-6 ">
-			<form action="usuario/add" method="post">
-				<img src="/img/Logos/1_Primary_logo_on_transparent.png" class="img-responsive" alt="" />
+			<form action="add" method="post">
+				<img src="/img/Logos/1_Primary_logo_on_transparent.png"
+					class="img-responsive" alt="" />
 				<h1>Cadastrar</h1>
 				<div class="form-group">
 					<input type="text" name="nome" class="form-control"
-						placeholder="Nome" alt="Nome" required />
+						placeholder="Nome" alt="Nome" value="${rusuario.nome}" required />
 				</div>
 				<div class="form-group">
 					<input type="text" name="endereco" class="form-control"
-						placeholder="Endereço" alt="Endereço" required />
+						placeholder="EndereÃ§o" alt="EndereÃ§o" value="${rusuario.endereco}"
+						required />
 				</div>
 				<div class="form-group">
-					<input id="cpf" type="text"  name="cpf" class="form-control"
-						placeholder="CPF" alt="CPF" required />
+					<input id="cpf" type="text" name="cpf" class="form-control"
+						placeholder="CPF" alt="CPF" value="${rusuario.cpf}" required />
 				</div>
 				<div class="form-group">
-					<input type="text" id="telefone" name="telefone" class="form-control"
-						placeholder="Telefone" alt="Telefone" required />
+					<input type="text" id="telefone" name="telefone"
+						class="form-control" placeholder="Telefone" alt="Telefone"
+						value="${rusuario.telefone}" required />
 				</div>
 				<div class="form-group">
 					<input type="email" name="email" class="form-control"
-						placeholder="E-mail" alt="E-mail" required />
+						placeholder="E-mail" alt="E-mail" value="${rusuario.email}"
+						required />
 				</div>
 				<div class="form-group">
 					<input type="password" name="senha" class="form-control"
@@ -47,6 +58,11 @@
 		<div class="col-lg-3"></div>
 	</div>
 
+	<script src="/js/jquery.js"></script>
+	<script src="/js/jquery.maskedinput.js"></script>
+	<script src="/bootstrap-3.3.7/js/bootstrap.js"></script>
+	<script src="/js/index.js"></script>
+	<script src="/js/globalscript.js"></script>
 
 </body>
 </html>

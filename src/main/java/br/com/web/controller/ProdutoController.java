@@ -1,6 +1,5 @@
 package br.com.web.controller;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -15,7 +14,7 @@ import br.com.web.model.Produto;
 public class ProdutoController {
 
 	@RequestMapping("/adm/gerenciar_produtos")
-	public String getList(Model model) throws SQLException	{
+	public String getList(Model model) {
 		ProdutoDao produtodao = new ProdutoJdbcDao();
 		List<Produto> produtos = produtodao.getProdutos();
 

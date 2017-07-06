@@ -1,8 +1,8 @@
 package br.com.web.controller;
 
-import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -21,41 +21,60 @@ import br.com.web.model.Usuario;
 public class UsuarioController{
 
 	@RequestMapping("/")
-	public String home(Model model) throws SQLException	{
+	public String home()  {
 		return "index";
 	}
 
 	@RequestMapping("/adm")
-	public String admHome(Model model) throws SQLException{
+	public String admHome()  {
 		return "adm/ADM_Index";
 	}
-	
+
 	@RequestMapping("/usuario")
-	public String userHome(Model model) throws SQLException{
+	public String userHome()  {
 		return "user/USER_Perfil";
 	}
 	
-	@RequestMapping(value = "/usuario/add", method = RequestMethod.POST)
-	public String create(@Valid Usuario rusuario, @RequestParam("re-senha") String resenha, RedirectAttributes redirectAttributes) throws SQLException{
+	@RequestMapping("/cadastro")
+	public String userCadastro()  {
+		return "Cadastro";
+	}
+	
+	@RequestMapping("/login")
+	public String userLogin()  {
+		return "Cadastro";
+	}
+
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public String create(@Valid Usuario rusuario, @RequestParam("re-senha") String resenha, 
+			@RequestParam("email") String email, RedirectAttributes red)  {
 		UsuarioDao usuariodao = new UsuarioJdbcDao();
-		if(rusuario.getSenha().equals(resenha)){
+		if(usuariodao.getUsuarioByEmail(email).getEmail() != null){
+			red.addFlashAttribute("rusuario", rusuario);
+			red.addFlashAttribute("ver", "Failed");
+			red.addFlashAttribute("msg", "Error: Email Já Cadastrado");
+			usuariodao.close();
+			return "Cadastro";
+		}
+		else if(rusuario.getSenha().equals(resenha)){
 			rusuario.setRole("usuario");
 			usuariodao.adiciona(rusuario);
-			redirectAttributes.addFlashAttribute("ver", "Success");
-			redirectAttributes.addFlashAttribute("msg", "Conta criada com sucesso");
+			red.addFlashAttribute("ver", "Success");
+			red.addFlashAttribute("msg", "Conta criada com sucesso");
 			usuariodao.close();
 			return "redirect:/";
 		}
 		else{
-			redirectAttributes.addFlashAttribute("ver", "Failed");
-			redirectAttributes.addFlashAttribute("msg", "Error.");
+			red.addFlashAttribute("rusuario", rusuario);
+			red.addFlashAttribute("ver", "Failed");
+			red.addFlashAttribute("msg", "Error: Senhas Não Conferem");
 			usuariodao.close();
-			return "redirect:/";
-		}		
+			return "Cadastro";
+		}
 	}
 
 	@RequestMapping("/adm/delete_usuario/{id}")
-	public String delete(@PathVariable("id") int id) throws SQLException{
+	public String delete(@PathVariable("id") int id)  {
 		UsuarioDao usuariodao = new UsuarioJdbcDao();
 		usuariodao.remove(id);
 		usuariodao.close();
@@ -63,33 +82,26 @@ public class UsuarioController{
 		return "redirect:/adm/gerenciar_usuario";
 	}
 
-	@RequestMapping("/usuario/redirect_update/{id}")
-	public String alt(@PathVariable("id") int id, Model model) throws SQLException{
-		UsuarioDao usuariodao = new UsuarioJdbcDao();
-		Usuario usuario = usuariodao.getUsuarioById(id);
-		model.addAttribute("cliente", usuario);
-		usuariodao.close();
-		return "redirect:/usuario/update";
-	}
-
 	@RequestMapping(value = "/usuario/update", method = RequestMethod.POST)
-	public String updateForm(Usuario rusuario, @RequestParam("re-senha") String resenha) throws SQLException{
-		return "USER_AlterarUsuario";
-	}
-
-	@RequestMapping(value = "/usuario/execute_update", method = RequestMethod.POST)
-	public String update(Usuario rusuario, @RequestParam("re-senha") String resenha) throws SQLException{
+	public String update(Usuario rusuario, @RequestParam("re-senha") String resenha, HttpServletRequest req, RedirectAttributes red)  {
 		UsuarioDao usuariodao = new UsuarioJdbcDao();
 		if(rusuario.getSenha().equals(resenha)){
 			usuariodao.altera(rusuario);
+			req.getSession().setAttribute("usuario", rusuario);
+			red.addFlashAttribute("ver", "Success");
+			red.addFlashAttribute("msg", "Conta alterada com sucesso");
 			usuariodao.close();
-			return "redirect:/";
+			return "redirect:/usuario";
+		}else{
+			red.addFlashAttribute("ver", "Failed");
+			red.addFlashAttribute("msg", "Error: Senhas Não Conferem");
+			usuariodao.close();
+			return "redirect:/usuario";
 		}
-		return "ErrorPage";
 	}
 
 	@RequestMapping("/adm/gerenciar_usuario")
-	public String getList(Model model) throws SQLException	{
+	public String getList(Model model)  	{
 		UsuarioDao usuarioDao = new UsuarioJdbcDao();
 		List<Usuario> usuarios = usuarioDao.getUsuarios();
 
@@ -97,5 +109,12 @@ public class UsuarioController{
 
 		usuarioDao.close();
 		return "adm/ADM_GerenciarUsuarios";
+	}
+
+	@RequestMapping("/usuario/agendar_servico")
+	public String agendarServico(RedirectAttributes redirectAttributes){
+
+		redirectAttributes.addFlashAttribute("msg", "Serviço Agendado com sucesso");
+		return "redirect:/";
 	}
 }

@@ -13,13 +13,10 @@
 </head>
 <body>
 	<%@ include file="../Cabecalho.jsp"%>
-	<%@ include file="USER_VisualizarDados.jsp" %>
-	<%@ include file="USER_AlterarUsuario.jsp"%>
-	
+
 	<script src="/js/jquery.js"></script>
 	<script src="/js/jquery.maskedinput.js"></script>
 	<script src="/bootstrap-3.3.7/js/bootstrap.js"></script>
 	<script src="/js/globalscript.js"></script>
-	<script src="/js/user_js.js"></script>
 </body>
 </html>

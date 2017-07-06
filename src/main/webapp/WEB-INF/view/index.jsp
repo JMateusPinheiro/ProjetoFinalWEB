@@ -15,7 +15,6 @@
 	<%@ include file="Cabecalho.jsp"%>
 	<%@ include file="Content.jsp"%>
 	<%@ include file="Login.jsp"%>
-	<%@ include file="Cadastro.jsp"%>
 	
 	<script src="/js/jquery.js"></script>
 	<script src="/js/jquery.maskedinput.js"></script>

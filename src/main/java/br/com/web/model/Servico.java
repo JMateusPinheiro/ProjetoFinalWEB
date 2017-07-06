@@ -1,11 +1,11 @@
 package br.com.web.model;
 
 public class Servico {
-
+	
+	int id;
 	String nome;
 	float preco;
 	String descricao;
-	String classificacao;
 
 	public String getNome() {
 		return nome;
@@ -25,10 +25,10 @@ public class Servico {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public String getClassificacao() {
-		return classificacao;
+	public int getId() {
+		return id;
 	}
-	public void setClassificacao(String classificacao) {
-		this.classificacao = classificacao;
+	public void setId(int id) {
+		this.id = id;
 	}
 }
