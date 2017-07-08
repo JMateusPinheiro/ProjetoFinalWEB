@@ -19,7 +19,11 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		}
 		else if(request.getSession().getAttribute("usuario") != null){
 			System.out.println("Opção 2" + uri);
-			if(request.getSession().getAttribute("admin").equals("yes") && (uri.startsWith("/adm"))){
+			if(uri.startsWith("/login") || (uri.startsWith("/cadastro"))){
+				response.sendRedirect("/");
+				return true;
+			}
+			else if(request.getSession().getAttribute("admin").equals("yes") && (uri.startsWith("/adm"))){
 				return true;
 			}
 			else if(request.getSession().getAttribute("admin").equals("yes") && (uri.startsWith("/usuario"))){
@@ -43,9 +47,12 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 			response.sendRedirect("/");
 			return true;
 		}
+		else if((uri.startsWith("/login") || uri.startsWith("/cadastro")) && request.getSession().getAttribute("usuario") == null){
+			return true;
+		}
 		else{
 			System.out.println("Opção 4" + uri);
-			response.sendRedirect("ErrorPage");
+			response.sendRedirect("/error");
 			return true;
 		}
 		

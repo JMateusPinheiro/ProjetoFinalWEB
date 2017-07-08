@@ -20,31 +20,6 @@ import br.com.web.model.Usuario;
 @Controller
 public class UsuarioController{
 
-	@RequestMapping("/")
-	public String home()  {
-		return "index";
-	}
-
-	@RequestMapping("/adm")
-	public String admHome()  {
-		return "adm/ADM_Index";
-	}
-
-	@RequestMapping("/usuario")
-	public String userHome()  {
-		return "user/USER_Perfil";
-	}
-	
-	@RequestMapping("/cadastro")
-	public String userCadastro()  {
-		return "Cadastro";
-	}
-	
-	@RequestMapping("/login")
-	public String userLogin()  {
-		return "Cadastro";
-	}
-
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String create(@Valid Usuario rusuario, @RequestParam("re-senha") String resenha, 
 			@RequestParam("email") String email, RedirectAttributes red)  {
@@ -116,5 +91,12 @@ public class UsuarioController{
 
 		redirectAttributes.addFlashAttribute("msg", "Serviço Agendado com sucesso");
 		return "redirect:/";
+	}
+	
+	@RequestMapping("/adm/ver_usuario/{id}")
+	public String verUser(@PathVariable("id") int id, HttpServletRequest req){
+		UsuarioDao usuarioDao = new UsuarioJdbcDao();
+		req.setAttribute("user", usuarioDao.getUsuarioById(id));
+		return "adm/ADM_VisualizarDadosUser";
 	}
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.web.dao.ServicoDao;
 import br.com.web.dao.ServicoJdbcDao;
@@ -22,5 +23,13 @@ public class ServicosController {
 		
 		servicodao.close();
 		return "adm/ADM_GerenciarServicos";
+	}
+	@RequestMapping("/adm/gerenciar_servicos/add")
+	public String addServiço(Servico servico, RedirectAttributes red){
+		ServicoDao servicodao = new ServicoJdbcDao();
+		servicodao.adcionarServico(servico);
+		servicodao.close();
+		red.addFlashAttribute("msg","Servico adicionado com sucesso");
+		return "redirect:/adm/gerenciar_servicos";
 	}
 }

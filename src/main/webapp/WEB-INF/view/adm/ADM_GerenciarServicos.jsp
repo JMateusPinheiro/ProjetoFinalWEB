@@ -20,10 +20,14 @@
 			<a href=""><button></button></a>
 			<div>
 				<h1>Gerenciar Servicos</h1>
+				<a href="adm/gerenciar_servicos/FormAdd"><button>Adicionar Serviços</button></a>
+				<a href=""><button>Listar Serviços Requisitados</button></a>
 				<table class="table table-hover text-center">
 					<thead>
 						<tr>
 							<th class="text-center">Nome</th>
+							<th class="text-center">Preço</th>
+							<th class="text-center">Descrição</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -31,6 +35,8 @@
 						<c:forEach var="servico" items="${servicos}">
 							<tr>
 								<td>${servico.nome}</td>
+								<td>${servico.preco}</td>
+								<td>${servico.descricao}</td>
 								<!-- Botão Visualizar-->
 								<td><a href="/adm/" class="btn btn-primary"><span
 										class="glyphicon glyphicon-eye-open"></span> Visualizar</a></td>

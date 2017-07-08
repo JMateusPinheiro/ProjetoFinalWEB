@@ -33,7 +33,9 @@ public class LoginController {
 			return "redirect:/adm";
 		}
 		else{
-			return "redirect:/";
+			redirectAttributes.addFlashAttribute("msg", "Email ou senha Incorretos");
+			redirectAttributes.addFlashAttribute("ver","Failed");
+			return "redirect:/login";
 		}
 	}
 

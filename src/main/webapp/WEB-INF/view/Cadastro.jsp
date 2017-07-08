@@ -12,7 +12,17 @@
 <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
+	<%@ include file="Cabecalho.jsp"%>
 	<div id="form-cadastro" class="col-lg-12 spacebottom">
+		<c:if test="${not empty msg && ver == 'Failed'}">
+			<div class="alert alert-danger alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<p>${msg}</p>
+			</div>
+		</c:if>
 		<div class="col-lg-3"></div>
 		<div class="col-lg-6 ">
 			<form action="add" method="post">
@@ -61,8 +71,6 @@
 	<script src="/js/jquery.js"></script>
 	<script src="/js/jquery.maskedinput.js"></script>
 	<script src="/bootstrap-3.3.7/js/bootstrap.js"></script>
-	<script src="/js/index.js"></script>
 	<script src="/js/globalscript.js"></script>
-
 </body>
 </html>

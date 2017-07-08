@@ -72,7 +72,7 @@
 							<c:otherwise>
 								<li><a id="btn-cadastro" href="/cadastro"><span
 										class="glyphicon glyphicon-user"></span> Cadastrar-se</a></li>
-								<li><a id="btn-login" href="#"><span
+								<li><a id="btn-login" href="/login"><span
 										class="glyphicon glyphicon-log-in"></span> Entrar</a></li>
 							</c:otherwise>
 						</c:choose>
