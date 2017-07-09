@@ -19,7 +19,7 @@ public class ProdutoJdbcDao implements ProdutoDao {
 	
 	@Override
 	public void adiciona(Produto produto) {
-		String sql = "insert into produtos " + "(nome,preco,descricao,qtd,img_link)" + " values (?,?,?,?,?)";
+		String sql = "insert into produtos " + "(nome,preco,descricao,qtd,img_link,classificacao)" + " values (?,?,?,?,?,?)";
 
 		try {
 			// prepared statement para inserção
@@ -31,6 +31,7 @@ public class ProdutoJdbcDao implements ProdutoDao {
 			stmt.setString(3, produto.getDescricao());
 			stmt.setInt(4, produto.getQtd());
 			stmt.setString(5, produto.getImg_link());
+			stmt.setString(6, produto.getClassificacao());
 
 			// executa
 			stmt.execute();
@@ -57,6 +58,7 @@ public class ProdutoJdbcDao implements ProdutoDao {
 				produto.setQtd(rs.getInt("qtd"));
 				produto.setPreco(rs.getFloat("preco"));
 				produto.setImg_link(rs.getString("img_link"));
+				produto.setClassificacao(rs.getString("classificacao"));
 				// adicionando o objeto à lista
 				produtos.add(produto);
 			}
@@ -85,6 +87,7 @@ public class ProdutoJdbcDao implements ProdutoDao {
 				produto.setQtd(rs.getInt("qtd"));
 				produto.setPreco(rs.getFloat("preco"));
 				produto.setImg_link(rs.getString("img_link"));
+				produto.setClassificacao(rs.getString("classificacao"));
 			}
 			rs.close();
 			stmt.close();

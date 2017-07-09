@@ -69,4 +69,10 @@ public class RedirectController {
 		servicodao.close();
 		return "user/USER_Servicos";
 	}
+	
+	@RequestMapping("/adm/gerenciar_produtos/FormAdd")
+	public String addProduto(HttpServletRequest req){
+		req.setAttribute("path", "add");
+		return "adm/ADM_AddProdutoForm";
+	}
 }
