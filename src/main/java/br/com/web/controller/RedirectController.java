@@ -1,7 +1,13 @@
 package br.com.web.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import br.com.web.dao.ServicoDao;
+import br.com.web.dao.ServicoJdbcDao;
 
 @Controller
 public class RedirectController {
@@ -29,5 +35,27 @@ public class RedirectController {
 	@RequestMapping("/login")
 	public String userLogin()  {
 		return "Login";
+	}
+	
+	@RequestMapping("/adm/gerenciar_servicos/FormAdd")
+	public String addServiço(HttpServletRequest req){
+		req.setAttribute("path", "add");
+		return "adm/ADM_FormAddServico";
+	}
+	
+	@RequestMapping("/adm/gerenciar_servicos/FormEdit/{id}")
+	public String editServiço(@PathVariable("id") int id, HttpServletRequest req){
+		ServicoDao servicodao = new ServicoJdbcDao();
+		req.setAttribute("path", "edit");
+		req.setAttribute("servico", servicodao.getServicoById(id));
+		servicodao.close();
+		return "adm/ADM_FormAddServico";
+	}
+	@RequestMapping("/usuario/solicitar_servico")
+	public String solicitarServiço(HttpServletRequest req){
+		ServicoDao servicodao = new ServicoJdbcDao();
+		req.setAttribute("servicos", servicodao.getAllServicos());
+		servicodao.close();
+		return "user/USER_AgendarServiço";
 	}
 }

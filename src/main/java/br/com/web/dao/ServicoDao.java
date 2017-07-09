@@ -2,6 +2,7 @@ package br.com.web.dao;
 
 import java.util.List;
 
+import br.com.web.model.Agendado;
 import br.com.web.model.Servico;
 
 public interface ServicoDao {
@@ -16,7 +17,13 @@ public interface ServicoDao {
 	
 	public List<Servico> getAllServicos();
 	
-	public void AgendarServico();
+	public void AgendarServico(Agendado agendado);
+	
+	public void execultarServico(Agendado agendado);
+	
+	public void cancelarServico(Agendado agendado);
+	
+	public List<Agendado> listarServicosAgendados();
 	
 	public void close();
 }

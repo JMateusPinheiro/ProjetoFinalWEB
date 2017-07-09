@@ -43,12 +43,12 @@
 								<li><a href="#">Produtos</a></li>
 							</ul></li>
 						<c:if test="${usuario.role == 'usuario'}">
-							<li><a href="#">Solicitar Serviço</a></li>
+							<li><a href="/usuario/solicitar_servico">Solicitar Serviço</a></li>
 						</c:if>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<c:if test="${usuario.role == 'usuario' || usuario == null}">
-							<li><a href="#"><span
+							<li><a href="#carrinhoModal" data-toggle="modal"><span
 									class="glyphicon glyphicon-shopping-cart"></span> Carrinho</a></li>
 						</c:if>
 						<c:choose>
@@ -81,5 +81,26 @@
 			</div>
 		</nav>
 	</header>
+
+	<!-- Modal do Carrinho -->
+	<div class="modal fade" id="carrinhoModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Carrinho Atual</h4>
+				</div>
+				<div class="modal-body"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					<button type="button" class="btn btn-primary">Comprar</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

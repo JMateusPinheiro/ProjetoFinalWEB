@@ -17,11 +17,13 @@
 	<div class="col-lg-12 spacebottom container">
 		<div class="col-lg-2"></div>
 		<div class="col-lg-8">
-			<a href=""><button></button></a>
 			<div>
 				<h1>Gerenciar Servicos</h1>
-				<a href="adm/gerenciar_servicos/FormAdd"><button>Adicionar Serviços</button></a>
-				<a href=""><button>Listar Serviços Requisitados</button></a>
+				<a href="/adm/gerenciar_servicos/FormAdd"><button
+						class="btn btn-primary">Adicionar Serviços</button></a> <a
+					href="/adm/gerenciar_servicos/ListarServicosRequisitados"><button
+						class="btn btn-primary">Listar Serviços Requisitados</button></a> <br>
+				<br>
 				<table class="table table-hover text-center">
 					<thead>
 						<tr>
@@ -37,15 +39,16 @@
 								<td>${servico.nome}</td>
 								<td>${servico.preco}</td>
 								<td>${servico.descricao}</td>
-								<!-- Botão Visualizar-->
-								<td><a href="/adm/" class="btn btn-primary"><span
-										class="glyphicon glyphicon-eye-open"></span> Visualizar</a></td>
 								<!--Botão Editar  -->
-								<td><a href="/adm/" class="btn btn-warning"><span
-										class="glyphicon glyphicon-edit"></span> Editar</a></td>
-								<!-- Botão Deletar-->
-								<td><a href="/adm/" class="btn btn-danger"><span
-										class="glyphicon glyphicon-trash"></span> Remover</a></td>
+								<td><a
+									href="/adm/gerenciar_servicos/FormEdit/${servico.id }"
+									class="btn btn-warning"> <span
+										class="glyphicon glyphicon-edit"></span> Editar
+								</a> <!-- Botão Deletar--> <a
+									href="/adm/gerenciar_servicos/delete/${servico.id }"
+									class="btn btn-danger"> <span
+										class="glyphicon glyphicon-trash"></span> Remover
+								</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
