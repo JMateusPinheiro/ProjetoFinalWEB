@@ -64,6 +64,10 @@
 											<li><a href="/adm"><span
 													class="glyphicon glyphicon-cog"></span> Gerenciar Site</a></li>
 										</c:if>
+										<c:if test="${usuario.role == 'usuario'}">
+										<li><a href="/usuario/servicos"><span
+												class="glyphicon glyphicon-user"></span> Servicos</a></li>
+										</c:if>
 										<li role="separator" class="divider"></li>
 										<li><a href="/deslogar"><span
 												class="glyphicon glyphicon-log-out"></span> Sair</a></li>

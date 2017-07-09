@@ -1,6 +1,7 @@
 package br.com.web.model;
 
 public class Agendado {
+	int id;
 	Usuario usuario;
 	Servico servico;
 	String data;
@@ -37,5 +38,11 @@ public class Agendado {
 	}
 	public void setServico(Servico servico) {
 		this.servico = servico;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 }

@@ -3,7 +3,6 @@ package br.com.web.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.websocket.server.PathParam;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -68,7 +67,7 @@ public class ServicosController {
 		UsuarioDao usuariodao = new UsuarioJdbcDao();
 		agendado.setUsuario(usuariodao.getUsuarioById(usuario_id));
 		agendado.setServico(servicodao.getServicoById(servico_id));
-		agendado.setStatus("ABERTA");
+		agendado.setStatus("ABERTO");
 		servicodao.AgendarServico(agendado);
 		return "redirect:/";
 	}
@@ -81,11 +80,19 @@ public class ServicosController {
 		return "adm/ADM_ListarAgendados";
 	}
 	
-	@RequestMapping("/adm/gerenciar_servicos/execultarServico")
-	public String execultarServico(HttpServletRequest req){
+	@RequestMapping("/adm/gerenciar_servicos/execultarServicos/{id}")
+	public String execultarServico(@PathVariable("id") int id){
 		ServicoDao servicodao = new ServicoJdbcDao();
-//		servicodao.execultarServico(agendado);
+		servicodao.execultarServico(servicodao.getAgedadoById(id));
 		servicodao.close();
 		return "redirect:/adm/gerenciar_servicos/ListarServicosRequisitados";
+	}
+	
+	@RequestMapping("/usuario/servicos/cancelarServicos/{id}")
+	public String cancelarServico(@PathVariable("id") int id){
+		ServicoDao servicodao = new ServicoJdbcDao();
+		servicodao.cancelarServico(servicodao.getAgedadoById(id));
+		servicodao.close();
+		return "redirect:/usuario/servicos";
 	}
 }

@@ -23,7 +23,11 @@ public interface ServicoDao {
 	
 	public void cancelarServico(Agendado agendado);
 	
+	public Agendado getAgedadoById(int id);
+	
 	public List<Agendado> listarServicosAgendados();
+	
+	public List<Agendado> getAgedadoByUsuarioId(int usuario_id);
 	
 	public void close();
 }

@@ -12,7 +12,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		
 		String uri = request.getRequestURI();
-		if(uri.endsWith("/")){
+		if(uri.equals("/")){
 			System.out.println("Opção 1" + uri);
 			response.sendRedirect("/");
 			return true;
@@ -48,10 +48,11 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 			return true;
 		}
 		else if((uri.startsWith("/login") || uri.startsWith("/cadastro")) && request.getSession().getAttribute("usuario") == null){
+			System.out.println("Opção 4" + uri);
 			return true;
 		}
 		else{
-			System.out.println("Opção 4" + uri);
+			System.out.println("Opção 5" + uri);
 			response.sendRedirect("/error");
 			return true;
 		}

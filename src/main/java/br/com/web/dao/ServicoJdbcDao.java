@@ -144,21 +144,31 @@ public class ServicoJdbcDao implements ServicoDao {
 
 	@Override
 	public void execultarServico(Agendado agendado) {
-		// TODO Auto-generated method stub
+		String sql = "update servicos_solicitados set status='FEITO' "
+				+ "where id=?";
+		try {
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			
+			stmt.setInt(1, agendado.getId());
+		
+			
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 		
 	}
 
 	@Override
 	public void cancelarServico(Agendado agendado) {
-		String sql = "update servicos_solicitados set status='FEITO' "
-				+ "where usuario_id=? and servico_id=? and data_requisitada=? and hora_requisitada=?";
+		String sql = "update servicos_solicitados set status='CANCELADO' "
+				+ "where id=?";
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			
-			stmt.setInt(1, agendado.getUsuario().getId());
-			stmt.setInt(2, agendado.getServico().getId());
-			stmt.setString(3, agendado.getData());
-			stmt.setString(4, agendado.getHora());
+			stmt.setInt(1, agendado.getId());
+		
 			
 			stmt.execute();
 			stmt.close();
@@ -178,6 +188,7 @@ public class ServicoJdbcDao implements ServicoDao {
 			while(rs.next()){
 				Agendado agendado = new Agendado();
 				
+				agendado.setId(rs.getInt("id"));
 				agendado.setUsuario(usuariodao.getUsuarioById(rs.getInt("usuario_id")));
 				agendado.setServico(getServicoById(rs.getInt("servico_id")));
 				agendado.setData(rs.getString("data_solicitada"));
@@ -192,6 +203,63 @@ public class ServicoJdbcDao implements ServicoDao {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}		
+	}
+
+	@Override
+	public Agendado getAgedadoById(int id) {
+		String sql = "select * from servicos_solicitados "
+				+ "where id=?";
+		try {
+			Agendado agendado = new Agendado();
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
+			UsuarioDao usuariodao = new UsuarioJdbcDao();
+			while(rs.next()){
+
+				agendado.setId(rs.getInt("id"));
+				agendado.setUsuario(usuariodao.getUsuarioById(rs.getInt("usuario_id")));
+				agendado.setServico(getServicoById(rs.getInt("servico_id")));
+				agendado.setData(rs.getString("data_solicitada"));
+				agendado.setHora(rs.getString("hora_solicitada"));
+				agendado.setStatus(rs.getString("status"));
+				
+			}
+			rs.close();
+			stmt.close();
+			return agendado;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public List<Agendado> getAgedadoByUsuarioId(int usuario_id) {
+		String sql = "select * from servicos_solicitados where usuario_id=?";
+		try {
+			List<Agendado> agendados = new ArrayList<Agendado>();
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setInt(1, usuario_id);
+			ResultSet rs = stmt.executeQuery();
+			UsuarioDao usuariodao = new UsuarioJdbcDao();
+			while(rs.next()){
+				Agendado agendado = new Agendado();
+				
+				agendado.setId(rs.getInt("id"));
+				agendado.setUsuario(usuariodao.getUsuarioById(rs.getInt("usuario_id")));
+				agendado.setServico(getServicoById(rs.getInt("servico_id")));
+				agendado.setData(rs.getString("data_solicitada"));
+				agendado.setHora(rs.getString("hora_solicitada"));
+				agendado.setStatus(rs.getString("status"));
+				
+				agendados.add(agendado);
+			}
+			rs.close();
+			stmt.close();
+			return agendados;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}	
 	}
 
 

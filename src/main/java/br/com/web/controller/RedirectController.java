@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.web.dao.ServicoDao;
 import br.com.web.dao.ServicoJdbcDao;
+import br.com.web.model.Usuario;
 
 @Controller
 public class RedirectController {
@@ -51,11 +52,21 @@ public class RedirectController {
 		servicodao.close();
 		return "adm/ADM_FormAddServico";
 	}
+	
 	@RequestMapping("/usuario/solicitar_servico")
 	public String solicitarServiço(HttpServletRequest req){
 		ServicoDao servicodao = new ServicoJdbcDao();
 		req.setAttribute("servicos", servicodao.getAllServicos());
 		servicodao.close();
 		return "user/USER_AgendarServiço";
+	}
+	
+	@RequestMapping("/usuario/servicos")
+	public String servicos(HttpServletRequest req){
+		ServicoDao servicodao = new ServicoJdbcDao();
+		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+		req.setAttribute("agendados", servicodao.getAgedadoByUsuarioId(usuario.getId()));
+		servicodao.close();
+		return "user/USER_Servicos";
 	}
 }
