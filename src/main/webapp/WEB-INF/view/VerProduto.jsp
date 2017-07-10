@@ -34,7 +34,7 @@
 			</div>
 		</c:if>
 			<a href="/usuario/addFav/${produto.id}"><button class="btn btn-default"><span class="glyphicon glyphicon-heart"></span> Adicionar a Favoritos</button></a>
-			<a><button class="btn btn-default"><span class="glyphicon glyphicon-shopping-cart"></span>Adicionar ao Carrinho</button></a>
+			<a href="#<%-- /usuario/carrinho/add/${produto.id} --%>"><button class="btn btn-default"><span class="glyphicon glyphicon-shopping-cart"></span>Adicionar ao Carrinho</button></a>
 			</c:if>
 			</div>
 		</div>

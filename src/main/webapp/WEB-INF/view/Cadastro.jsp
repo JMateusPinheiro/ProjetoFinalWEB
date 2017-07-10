@@ -14,7 +14,7 @@
 <body>
 	<%@ include file="Cabecalho.jsp"%>
 	<div id="form-cadastro" class="col-lg-12 spacebottom">
-		<c:if test="${not empty msg && ver == 'Failed'}">
+		<c:if test="${not empty msg}">
 			<div class="alert alert-danger alert-dismissible" role="alert">
 				<button type="button" class="close" data-dismiss="alert"
 					aria-label="Close">

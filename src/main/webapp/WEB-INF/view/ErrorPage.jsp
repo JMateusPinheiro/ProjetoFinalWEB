@@ -12,9 +12,16 @@
 <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-<%@ include file="Cabecalho.jsp" %>
+	<%@ include file="Cabecalho.jsp"%>
 	<div class="jumbotron center-block center-text">
-		<h2><span class="glyphicon glyphicon-warning-sign"></span> ${erro}</h2>
+		<h2>
+			<span class="glyphicon glyphicon-warning-sign"></span> ${erro}
+		</h2>
 	</div>
+
+	<script src="/js/jquery.js"></script>
+	<script src="/js/jquery.maskedinput.js"></script>
+	<script src="/bootstrap-3.3.7/js/bootstrap.js"></script>
+	<script src="/js/globalscript.js"></script>
 </body>
 </html>

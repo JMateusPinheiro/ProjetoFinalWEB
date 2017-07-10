@@ -15,6 +15,8 @@ import br.com.web.dao.ProdutoDao;
 import br.com.web.dao.ProdutoJdbcDao;
 import br.com.web.dao.ServicoDao;
 import br.com.web.dao.ServicoJdbcDao;
+import br.com.web.model.Carrinho;
+import br.com.web.model.Item;
 import br.com.web.model.Produto;
 import br.com.web.model.Usuario;
 
@@ -32,7 +34,7 @@ public class RedirectController {
 
 	@RequestMapping("/adm")
 	public String admHome()  {
-		return "adm/ADM_GerenciarProdutos";
+		return "adm/ADM_Index";
 	}
 
 	@RequestMapping("/usuario")
@@ -103,4 +105,18 @@ public class RedirectController {
 		produtodao.close();
 		return "ProdutosExpecificos";
 	}
+	
+//	@RequestMapping("/usuario/carrinho/add/{produto_id}")
+//	public void addCarrinho(HttpServletRequest req, @PathVariable("produto_id") int produto_id){
+//		Carrinho carrinho1 = (Carrinho) req.getSession().getAttribute("carrinho");
+//		ProdutoDao produtodao = new ProdutoJdbcDao();
+//		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+//		Item item = new Item();
+//		item.setProduto(produtodao.getProduto(produto_id));
+//		item.setUsuario_id(usuario.getId());
+//		Carrinho carrinho = new Carrinho();
+//		carrinho.getCarrinho().add(item);
+//		carrinho1 = carrinho;
+//		req.getSession().setAttribute("carrinho", carrinho1);
+//	}
 }

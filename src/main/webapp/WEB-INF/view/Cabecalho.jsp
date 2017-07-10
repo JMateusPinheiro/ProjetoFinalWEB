@@ -101,7 +101,27 @@
 					</button>
 					<h4 class="modal-title" id="myModalLabel">Carrinho Atual</h4>
 				</div>
-				<div class="modal-body"></div>
+				<div class="modal-body">
+					<table class="table table-hover text-center">
+						<thead>
+							<tr>
+								<th class="text-center">Produto</th>
+								<th class="text-center">Preço</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="item" items="${carrinho}">
+								<tr>
+									<td>${item.produto.nome }</td>
+									<!-- Botão Deletar-->
+									<td><a href="/usuario/carrinho/remove/${produto.id}"
+										class="btn btn-danger"><span
+											class="glyphicon glyphicon-trash"></span> Remover</a></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 					<button type="button" class="btn btn-primary">Comprar</button>

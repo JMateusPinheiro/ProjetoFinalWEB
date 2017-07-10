@@ -181,7 +181,7 @@ public class UsuarioJdbcDao implements UsuarioDao{
 	}
 
 	@Override
-	public void addHis(int usuario_id, int produto_id, Date data_compra) {
+	public void finalizarCompra(int usuario_id, int produto_id, Date data_compra) {
 
 	}
 

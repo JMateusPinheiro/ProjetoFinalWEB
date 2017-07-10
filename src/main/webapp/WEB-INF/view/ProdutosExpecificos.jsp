@@ -16,8 +16,9 @@
 	<div class="col-lg-12">
 		<div class="col-lg-2"></div>
 		<div class="container col-lg-8 center">
-			<div> <h3>Todos os Produtos para ${produto.classificacao }</h3></div>
 			<div class="center">
+			<div><h3>Todos os Produtos</h3>
+					</div>
 				<c:forEach var="produto" items="${produtos}">
 					<div
 						class="thumbnail thumbnail-height col-lg-3 col-md-3 col-sm-3 col-xs-3">

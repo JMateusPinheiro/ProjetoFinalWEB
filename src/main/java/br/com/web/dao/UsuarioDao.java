@@ -22,8 +22,8 @@ public interface UsuarioDao {
 	
 	public boolean addFav(int usuario_id,int produto_id);
 	
-	public void addHis(int usuario_id,int produto_id, Date data_compra);
-	
+	public void finalizarCompra(int usuario_id,int produto_id, Date data_compra);
+		
 	public List<Produto> getFavoritos(int usuario_id);
 
 	public void removeFavorito(int usuario_id, int produto_id);

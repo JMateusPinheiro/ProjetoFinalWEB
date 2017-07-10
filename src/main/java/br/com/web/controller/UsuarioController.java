@@ -26,7 +26,6 @@ public class UsuarioController{
 		UsuarioDao usuariodao = new UsuarioJdbcDao();
 		if(usuariodao.getUsuarioByEmail(email).getEmail() != null){
 			red.addFlashAttribute("rusuario", rusuario);
-			red.addFlashAttribute("ver", "Failed");
 			red.addFlashAttribute("msg", "Error: Email Já Cadastrado");
 			usuariodao.close();
 			return "Cadastro";
@@ -41,7 +40,6 @@ public class UsuarioController{
 		}
 		else{
 			red.addFlashAttribute("rusuario", rusuario);
-			red.addFlashAttribute("ver", "Failed");
 			red.addFlashAttribute("msg", "Error: Senhas Não Conferem");
 			usuariodao.close();
 			return "Cadastro";
