@@ -25,22 +25,22 @@
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">Cachorros <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Produtos</a></li>
+								<li><a href="/produtos?animal=Cachorro">Produtos</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">Gatos <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Produtos</a></li>
+								<li><a href="/produtos?animal=Gato">Produtos</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">Aves <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Produtos</a></li>
+								<li><a href="/produtos?animal=Aves">Produtos</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">Roedores <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Produtos</a></li>
+								<li><a href="/produtos?animal=Roedores">Produtos</a></li>
 							</ul></li>
 						<c:if test="${usuario.role == 'usuario'}">
 							<li><a href="/usuario/solicitar_servico">Solicitar

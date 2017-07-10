@@ -104,8 +104,12 @@ public class UsuarioController{
 	public String addFav(@PathVariable("produto_id") int produto_id, HttpServletRequest req, RedirectAttributes red){
 		UsuarioDao usuariodao = new UsuarioJdbcDao();
 		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
-		usuariodao.addFav(usuario.getId(), produto_id);
-		red.addFlashAttribute("msg","Adicionado aos Favoritos");
+		if(usuariodao.addFav(usuario.getId(), produto_id)){
+			red.addFlashAttribute("msg","Adicionado aos Favoritos");
+			usuariodao.close();	
+			return "redirect:/produto/" + produto_id;
+		}
+		red.addFlashAttribute("msg","Favorito já existe");
 		usuariodao.close();		
 		return "redirect:/produto/" + produto_id;
 	}
@@ -117,5 +121,15 @@ public class UsuarioController{
 		req.setAttribute("favoritos", usuariodao.getFavoritos(usuario.getId()));
 		usuariodao.close();
 		return "user/USER_Favoritos";
+	}
+	
+	@RequestMapping("/usuario/verFav/remove/{produto_id}")
+	public String removeFav(HttpServletRequest req, @PathVariable("produto_id") int produto_id, RedirectAttributes red){
+		UsuarioDao usuariodao = new UsuarioJdbcDao();
+		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+		usuariodao.removeFavorito(usuario.getId(), produto_id);
+		red.addFlashAttribute("msg","Favorito removido");
+		usuariodao.close();
+		return "redirect:/usuario/verFav";
 	}
 }

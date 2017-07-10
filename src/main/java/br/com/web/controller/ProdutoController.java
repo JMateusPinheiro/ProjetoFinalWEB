@@ -30,7 +30,7 @@ public class ProdutoController {
 		List<Produto> produtos = produtodao.getProdutos();
 		model.addAttribute("produtos", produtos);
 		produtodao.close();
-		return "adm/ADM_GerenciarProdutos";
+		return "redirect:/adm";
 	}
 	@PostMapping("/adm/gerenciar_produtos/add")
 	public String addProduto(Produto produto,@RequestParam("classificacao") String classificacao,@RequestParam("file") MultipartFile file,

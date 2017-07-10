@@ -137,4 +137,33 @@ public class ProdutoJdbcDao implements ProdutoDao {
 			throw new RuntimeException(e);
 		}
 	}
+
+	@Override
+	public List<Produto> getProdutosByClassificacao(String animal) {
+		try {
+			List<Produto> produtos = new ArrayList<Produto>();
+			PreparedStatement stmt = this.connection.prepareStatement("select * from produtos where classificacao=?");
+			stmt.setString(1, animal);
+			ResultSet rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				// criando o objeto Contato
+				Produto produto = new Produto();
+				produto.setId(rs.getInt("id"));
+				produto.setNome(rs.getString("nome"));
+				produto.setDescricao(rs.getString("descricao"));
+				produto.setQtd(rs.getInt("qtd"));
+				produto.setPreco(rs.getFloat("preco"));
+				produto.setImg_link(rs.getString("img_link"));
+				produto.setClassificacao(rs.getString("classificacao"));
+				// adicionando o objeto à lista
+				produtos.add(produto);
+			}
+			rs.close();
+			stmt.close();
+			return produtos;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

@@ -20,12 +20,14 @@ public interface UsuarioDao {
 	
 	public void remove(int id);
 	
-	public void addFav(int usuario_id,int produto_id);
+	public boolean addFav(int usuario_id,int produto_id);
 	
 	public void addHis(int usuario_id,int produto_id, Date data_compra);
 	
 	public List<Produto> getFavoritos(int usuario_id);
-	
+
+	public void removeFavorito(int usuario_id, int produto_id);
 	
 	public void close();
+
 }

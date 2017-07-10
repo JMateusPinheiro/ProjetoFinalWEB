@@ -163,15 +163,18 @@ public class UsuarioJdbcDao implements UsuarioDao{
 	}
 
 	@Override
-	public void addFav(int usuario_id, int produto_id) {
+	public boolean addFav(int usuario_id, int produto_id) {
 		String sql = "insert into favoritos(usuario_id, produto_id) values(?,?)";
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setInt(1, usuario_id);
 			stmt.setInt(2, produto_id);
-			stmt.execute();
+			if((getFavorito(usuario_id, produto_id).getId() != produto_id)){
+				stmt.execute();
+				return true;
+			}
 			stmt.close();
-			
+			return false;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -179,7 +182,7 @@ public class UsuarioJdbcDao implements UsuarioDao{
 
 	@Override
 	public void addHis(int usuario_id, int produto_id, Date data_compra) {
-		
+
 	}
 
 	@Override
@@ -191,7 +194,7 @@ public class UsuarioJdbcDao implements UsuarioDao{
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setInt(1, usuario_id);
 			ResultSet rs = stmt.executeQuery();
-			
+
 			while(rs.next()){
 				Produto produto = produtodao.getProduto(rs.getInt("produto_id"));
 				favoritos.add(produto);
@@ -200,6 +203,43 @@ public class UsuarioJdbcDao implements UsuarioDao{
 			stmt.close();
 			produtodao.close();
 			return favoritos;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public Produto getFavorito(int usuario_id, int produto_id){
+		String sql = "select * from favoritos where usuario_id=? and produto_id=?";
+		try {
+			ProdutoDao produtodao = new ProdutoJdbcDao();
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setInt(1, usuario_id);
+			stmt.setInt(2, produto_id);
+			ResultSet rs = stmt.executeQuery();
+			// criando o objeto Contato
+			Produto produto = new Produto();
+
+			while (rs.next()) {
+				produto = produtodao.getProduto(rs.getInt("produto_id"));
+			}
+			System.out.println(produto.getId());
+			rs.close();
+			stmt.close();
+			return produto;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public void removeFavorito(int usuario_id, int produto_id){
+		String sql = "delete from favoritos where usuario_id=? and produto_id=?";
+		try {
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setInt(1, usuario_id);
+			stmt.setInt(2, produto_id);
+			stmt.execute();
+			stmt.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

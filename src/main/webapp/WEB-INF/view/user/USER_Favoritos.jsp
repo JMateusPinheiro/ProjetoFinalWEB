@@ -17,31 +17,39 @@
 	<%@ include file="../Cabecalho.jsp"%>
 
 	<div class="col-lg-12 spacebottom container">
-		<div class="col-lg-2"></div>
-		<div class="col-lg-8">
-			<h1>Meus Favoritos</h1>
-			<table class="table table-hover text-center">
-				<thead>
-					<tr>
-						<th class="text-center">Nome</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="favorito" items="${favoritos}">
+		<c:if test="${not empty msg}">
+			<div class="alert alert-success alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<p>${msg}</p>
+			</div></c:if>
+			<div class="col-lg-2"></div>
+			<div class="col-lg-8">
+				<h1>Meus Favoritos</h1>
+				<table class="table table-hover text-center">
+					<thead>
 						<tr>
-							<td>${favorito.nome}</td>
-							<!--Botão Excluir  -->
-							<td><a
-								href=""
-								class="btn btn-danger"> <span class="glyphicon glyphicon-remove"></span> Excluir Favorito
-							</a></td>
+							<th class="text-center">Nome</th>
+							<th></th>
 						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-		<div class="col-lg-2"></div>
+					</thead>
+					<tbody>
+						<c:forEach var="favorito" items="${favoritos}">
+							<tr>
+								<td>${favorito.nome}</td>
+								<!--Botão Excluir  -->
+								<td><a href="/usuario/verFav/remove/${favorito.id }"
+									class="btn btn-danger"> <span
+										class="glyphicon glyphicon-remove"></span> Excluir Favorito
+								</a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-lg-2"></div>
 	</div>
 	<script src="/js/jquery.js"></script>
 	<script src="/js/jquery.maskedinput.js"></script>

@@ -18,4 +18,6 @@ public interface ProdutoDao {
 	public void remove(int id);
 
 	public void close();
+
+	public List<Produto> getProdutosByClassificacao(String animal);
 }

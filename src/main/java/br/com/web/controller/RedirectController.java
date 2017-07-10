@@ -6,8 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.web.dao.ProdutoDao;
 import br.com.web.dao.ProdutoJdbcDao;
@@ -30,7 +32,7 @@ public class RedirectController {
 
 	@RequestMapping("/adm")
 	public String admHome()  {
-		return "adm/ADM_Index";
+		return "adm/ADM_GerenciarProdutos";
 	}
 
 	@RequestMapping("/usuario")
@@ -92,5 +94,13 @@ public class RedirectController {
 		req.setAttribute("produto", produtodao.getProduto(id));
 		produtodao.close();
 		return "VerProduto";
+	}
+	
+	@GetMapping("/produtos")
+	public String exProduto(@RequestParam("animal") String animal, HttpServletRequest req){
+		ProdutoDao produtodao = new ProdutoJdbcDao();
+		req.setAttribute("produtos", produtodao.getProdutosByClassificacao(animal));
+		produtodao.close();
+		return "ProdutosExpecificos";
 	}
 }
