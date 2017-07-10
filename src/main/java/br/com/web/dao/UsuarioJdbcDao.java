@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import br.com.web.model.Produto;
 import br.com.web.model.Usuario;
 
 public class UsuarioJdbcDao implements UsuarioDao{
@@ -156,6 +158,49 @@ public class UsuarioJdbcDao implements UsuarioDao{
 		try{
 			connection.close();
 		}catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public void addFav(int usuario_id, int produto_id) {
+		String sql = "insert into favoritos(usuario_id, produto_id) values(?,?)";
+		try {
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setInt(1, usuario_id);
+			stmt.setInt(2, produto_id);
+			stmt.execute();
+			stmt.close();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public void addHis(int usuario_id, int produto_id, Date data_compra) {
+		
+	}
+
+	@Override
+	public List<Produto> getFavoritos(int usuario_id) {
+		String sql = "select * from favoritos where usuario_id = ?";
+		try {
+			List<Produto> favoritos = new ArrayList<Produto>();
+			ProdutoDao produtodao = new ProdutoJdbcDao();
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setInt(1, usuario_id);
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()){
+				Produto produto = produtodao.getProduto(rs.getInt("produto_id"));
+				favoritos.add(produto);
+			}
+			rs.close();
+			stmt.close();
+			produtodao.close();
+			return favoritos;
+		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 	}

@@ -1,20 +1,30 @@
 package br.com.web.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.web.dao.ProdutoDao;
+import br.com.web.dao.ProdutoJdbcDao;
 import br.com.web.dao.ServicoDao;
 import br.com.web.dao.ServicoJdbcDao;
+import br.com.web.model.Produto;
 import br.com.web.model.Usuario;
 
 @Controller
 public class RedirectController {
 
 	@RequestMapping("/")
-	public String home()  {
+	public String home(Model model)  {
+		ProdutoDao produtodao = new ProdutoJdbcDao();
+		List<Produto> produtos = produtodao.getProdutos();
+		model.addAttribute("produtos", produtos);
+		produtodao.close();
 		return "index";
 	}
 
@@ -74,5 +84,13 @@ public class RedirectController {
 	public String addProduto(HttpServletRequest req){
 		req.setAttribute("path", "add");
 		return "adm/ADM_AddProdutoForm";
+	}
+	
+	@RequestMapping("/produto/{id}")
+	public String visualizarProduto(@PathVariable("id") int id, HttpServletRequest req){
+		ProdutoDao produtodao = new ProdutoJdbcDao();
+		req.setAttribute("produto", produtodao.getProduto(id));
+		produtodao.close();
+		return "VerProduto";
 	}
 }

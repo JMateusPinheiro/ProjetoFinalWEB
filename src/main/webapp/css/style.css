@@ -27,13 +27,11 @@ form > div {
 .spacebottom {
 	margin-bottom: 35px;
 }
-.banner {
-	width: 100%;
-	height: 300px;
-	background-size: 1350px 280px;
-}
 .logo img{
 	width: 110px;
+}
+.produto img{
+	width: 300px;
 }
 
 .produto{
@@ -49,4 +47,11 @@ form > div {
 .limg{
 	width: 90px;
 	height: 80px;
+}
+.center {
+	margin-top: 50px;
+	text-align: center;
+}
+.thumbnail-height {
+	height: 270px;
 }

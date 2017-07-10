@@ -43,11 +43,12 @@
 								<li><a href="#">Produtos</a></li>
 							</ul></li>
 						<c:if test="${usuario.role == 'usuario'}">
-							<li><a href="/usuario/solicitar_servico">Solicitar Serviço</a></li>
+							<li><a href="/usuario/solicitar_servico">Solicitar
+									Serviço</a></li>
 						</c:if>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<c:if test="${usuario.role == 'usuario' || usuario == null}">
+						<c:if test="${usuario.role == 'usuario'}">
 							<li><a href="#carrinhoModal" data-toggle="modal"><span
 									class="glyphicon glyphicon-shopping-cart"></span> Carrinho</a></li>
 						</c:if>
@@ -65,8 +66,10 @@
 													class="glyphicon glyphicon-cog"></span> Gerenciar Site</a></li>
 										</c:if>
 										<c:if test="${usuario.role == 'usuario'}">
-										<li><a href="/usuario/servicos"><span
-												class="glyphicon glyphicon-user"></span> Servicos</a></li>
+											<li><a href="/usuario/servicos"><span
+													class="glyphicon glyphicon-user"></span> Serviços</a></li>
+											<li><a href="/usuario/verFav"><span
+													class="glyphicon glyphicon-user"></span> Favoritos</a></li>
 										</c:if>
 										<li role="separator" class="divider"></li>
 										<li><a href="/deslogar"><span

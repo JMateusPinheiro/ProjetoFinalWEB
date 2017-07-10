@@ -99,4 +99,23 @@ public class UsuarioController{
 		req.setAttribute("user", usuarioDao.getUsuarioById(id));
 		return "adm/ADM_VisualizarDadosUser";
 	}
+	
+	@RequestMapping("/usuario/addFav/{produto_id}")
+	public String addFav(@PathVariable("produto_id") int produto_id, HttpServletRequest req, RedirectAttributes red){
+		UsuarioDao usuariodao = new UsuarioJdbcDao();
+		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+		usuariodao.addFav(usuario.getId(), produto_id);
+		red.addFlashAttribute("msg","Adicionado aos Favoritos");
+		usuariodao.close();		
+		return "redirect:/produto/" + produto_id;
+	}
+	
+	@RequestMapping("/usuario/verFav")
+	public String verFav(HttpServletRequest req){
+		UsuarioDao usuariodao = new UsuarioJdbcDao();
+		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+		req.setAttribute("favoritos", usuariodao.getFavoritos(usuario.getId()));
+		usuariodao.close();
+		return "user/USER_Favoritos";
+	}
 }

@@ -28,9 +28,7 @@ public class ProdutoController {
 	public String getList(Model model) {
 		ProdutoDao produtodao = new ProdutoJdbcDao();
 		List<Produto> produtos = produtodao.getProdutos();
-
 		model.addAttribute("produtos", produtos);
-
 		produtodao.close();
 		return "adm/ADM_GerenciarProdutos";
 	}
@@ -43,7 +41,6 @@ public class ProdutoController {
 			byte[] bytes = file.getBytes();
 			Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
 			Files.write(path, bytes);
-			redirectAttributes.addFlashAttribute("msg", "You successfully uploaded '" + file.getOriginalFilename() + "'");
 			produto.setImg_link("/img/produtos/" + file.getOriginalFilename());
 			produto.setClassificacao(classificacao);
 			produtodao.adiciona(produto);

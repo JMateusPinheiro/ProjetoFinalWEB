@@ -10,38 +10,32 @@
 	sizes="32x32" />
 <link rel="stylesheet" href="/bootstrap-3.3.7/css/bootstrap.css" />
 <link rel="stylesheet" href="/css/style.css" />
+<link rel="stylesheet" href="/css/jquery-ui.css">
+<link rel="stylesheet" href="/css/jquery.timepicker.css">
 </head>
 <body>
-	<%@ include file="ADM_Cabecalho.jsp"%>
+	<%@ include file="../Cabecalho.jsp"%>
+
 	<div class="col-lg-12 spacebottom container">
 		<div class="col-lg-2"></div>
 		<div class="col-lg-8">
-			<h1>Gerenciar Serviços Requisitados</h1>
+			<h1>Meus Favoritos</h1>
 			<table class="table table-hover text-center">
 				<thead>
 					<tr>
 						<th class="text-center">Nome</th>
-						<th class="text-center">Serviço</th>
-						<th class="text-center">Data/Hora</th>
-						<th class="text-center">Status</th>
 						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="agendado" items="${agendados}">
+					<c:forEach var="favorito" items="${favoritos}">
 						<tr>
-							<td>${agendado.usuario.nome}</td>
-							<td>${agendado.servico.nome}</td>
-							<td>${agendado.data}-${agendado.hora}</td>
-							<td>${agendado.status}</td>
-							<!--Botão Editar  -->
-							<td><c:if test="${agendado.status == 'ABERTO'}">
-									<a
-										href="/adm/gerenciar_servicos/execultarServicos/${agendado.id}"
-										class="btn btn-success"> <span
-										class="glyphicon glyphicon-ok"></span> Execultar Serviço
-									</a>
-								</c:if></td>
+							<td>${favorito.nome}</td>
+							<!--Botão Excluir  -->
+							<td><a
+								href=""
+								class="btn btn-danger"> <span class="glyphicon glyphicon-remove"></span> Excluir Favorito
+							</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

@@ -32,7 +32,7 @@ public class ErroController implements ErrorController{
 			return "ErrorPage";
 		}
 		else if(httpErrorCode == 500){
-			errorMsg = "Desculpe Tivemos um Error no Servidor. Contate o Administrador so Sistema";
+			errorMsg = "Desculpe Tivemos um Error no Servidor. Contate o Administrador do Sistema";
 			model.addAttribute("erro", errorMsg);
 			return "ErrorPage";
 		}
